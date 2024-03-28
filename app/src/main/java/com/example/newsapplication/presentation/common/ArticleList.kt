@@ -1,5 +1,6 @@
 package com.example.newsapplication.presentation.common
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -22,7 +23,7 @@ fun ArticleList(
     val handlePagingResult = handlePagingResult(articles = articles)
     if(handlePagingResult){
         LazyColumn(
-            modifier = Modifier.fillMaxSize(),
+            modifier = modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(24.dp),
             contentPadding = PaddingValues(all = 3.dp)
         ){
@@ -33,6 +34,32 @@ fun ArticleList(
             }
         }
     }
+
+}
+
+
+@Composable
+fun ArticleList(
+    modifier: Modifier = Modifier,
+    articles:List<Article>,
+    onClick: (Article) -> Unit
+) {
+
+        if(articles.isEmpty()){
+            EmptyScreen()
+        }
+        LazyColumn(
+            modifier = modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(24.dp),
+            contentPadding = PaddingValues(all = 3.dp)
+        ){
+            items(count = articles.size){
+                val article = articles[it]
+                ArticleCard( article = article, onClick = {onClick(article)})
+
+            }
+        }
+
 
 }
 
@@ -55,6 +82,10 @@ fun handlePagingResult(
             false
         }
         error != null ->{
+            EmptyScreen()
+            false
+        }
+        articles.itemCount == 0 -> {
             EmptyScreen()
             false
         }

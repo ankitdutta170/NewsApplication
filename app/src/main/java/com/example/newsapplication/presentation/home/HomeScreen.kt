@@ -33,7 +33,8 @@ import com.example.newsapplication.presentation.navgraph.Route
 @Composable
 fun HomeScreen(
     articles: LazyPagingItems<Article>,
-    navigate:(String) -> Unit
+    navigateToSearch:() -> Unit,
+    navigateToDetails:(Article) -> Unit,
 ) {
     val titles by  remember {
         derivedStateOf {
@@ -53,23 +54,23 @@ fun HomeScreen(
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .padding(24.dp)
+            .padding(12.dp)
             .statusBarsPadding()
     ){
         Image(painter = painterResource(id = R.drawable.ic_logo), contentDescription = "",
             modifier = Modifier
                 .width(150.dp)
                 .height(30.dp)
-                .padding(horizontal = 24.dp)
+                .padding(horizontal = 12.dp)
             )
         
         Spacer(modifier = Modifier.height(24.dp))
 
         SearchBar(
-            modifier = Modifier.padding(24.dp),
+            modifier = Modifier.padding(12.dp),
             text = "", readOnly = true, onValueChange = {},
             onClick = {
-                navigate(Route.SearchScreen.route)
+                navigateToSearch()
             },
             onSearch = {}
             )
@@ -90,7 +91,7 @@ fun HomeScreen(
         ArticleList(
             modifier = Modifier.padding(24.dp),
             articles = articles, onClick ={
-            navigate(Route.DetailsScreen.route)
+            navigateToDetails(it)
         } )
 
     }

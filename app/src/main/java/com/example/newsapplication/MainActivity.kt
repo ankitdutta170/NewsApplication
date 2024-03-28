@@ -13,10 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.newsapplication.presentation.navgraph.NavGraph
 import com.example.newsapplication.ui.theme.NewsApplicationTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -28,6 +30,12 @@ class MainActivity : ComponentActivity() {
         installSplashScreen().apply {
             setKeepOnScreenCondition(condition = { viewModel.splashCondition.value})
         }
+
+        lifecycleScope.launch {
+
+        }
+
+
         setContent {
             NewsApplicationTheme {
 

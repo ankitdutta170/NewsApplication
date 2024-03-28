@@ -45,7 +45,7 @@ fun ArticleCard(
                 .clip(MaterialTheme.shapes.medium),
             model = ImageRequest
                 .Builder(context =context)
-                .data(article.urlToImage),
+                .data(article.urlToImage).build(),
             contentDescription = "",
             contentScale = ContentScale.Crop)
 
