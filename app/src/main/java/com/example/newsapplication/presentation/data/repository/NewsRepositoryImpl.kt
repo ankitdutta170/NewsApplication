@@ -53,7 +53,7 @@ class NewsRepositoryImpl(
       return newsDao.getArticles()
     }
 
-    override suspend fun selectArticle(url:String): Article {
+    override suspend fun selectArticle(url:String): Article?{
         return newsDao.getArticle(url)
     }
 }
