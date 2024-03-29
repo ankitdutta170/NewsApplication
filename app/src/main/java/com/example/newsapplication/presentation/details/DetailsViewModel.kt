@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsapplication.presentation.domain.model.Article
 import com.example.newsapplication.presentation.domain.usecase.news.NewsUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,7 +23,7 @@ class DetailsViewModel @Inject constructor(
     fun onEvent(event:DetailsEvent){
         when(event){
             is DetailsEvent.UpsertDeleteArticle -> {
-                viewModelScope.launch {
+                viewModelScope.launch(Dispatchers.IO){
                     val article = newsUseCases.selectArticle(event.article.url)
                     if(article == null){
                         upsertArticle(event.article)

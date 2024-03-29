@@ -74,7 +74,7 @@ fun DetailsScreen(
                         .fillMaxWidth()
                         .height(248.dp)
                         .clip(MaterialTheme.shapes.medium),
-                    model = ImageRequest.Builder(context = context).data(article.url).build(),
+                    model = ImageRequest.Builder(context = context).data(article.urlToImage).build(),
                     contentDescription = null)
 
                 Spacer(modifier = Modifier.height(24.dp))

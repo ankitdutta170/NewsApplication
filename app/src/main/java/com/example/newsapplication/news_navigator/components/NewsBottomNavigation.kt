@@ -30,7 +30,7 @@ fun NewsBottomNavigation(
     NavigationBar(
         modifier = Modifier.fillMaxWidth(),
         containerColor = MaterialTheme.colorScheme.background,
-        tonalElevation = 10.dp
+        tonalElevation = 5.dp
     ) {
         items.forEachIndexed{ index,item ->
             NavigationBarItem(selected = index == selected,
@@ -42,9 +42,9 @@ fun NewsBottomNavigation(
                         Icon(
                             painter = painterResource(id = item.icon), 
                             contentDescription = null,
-                            modifier = Modifier.size(20.dp)
+                            modifier = Modifier.size(15.dp)
                             )
-                        Spacer(modifier = Modifier.height(10.dp))
+                        Spacer(modifier = Modifier.height(5.dp))
                         Text(text = item.text, style = MaterialTheme.typography.labelSmall)
                     }
                 },

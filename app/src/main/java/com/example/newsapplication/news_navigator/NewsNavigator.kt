@@ -68,7 +68,6 @@ fun NewsNavigator() {
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
             if(isBottomBarVisible){
-
                 NewsBottomNavigation(items = bottomNavigationItems,
                     selected = selectedItem ,
                     onItemClick = {index ->

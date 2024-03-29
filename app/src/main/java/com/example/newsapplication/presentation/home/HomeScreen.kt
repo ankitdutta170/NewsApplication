@@ -75,7 +75,7 @@ fun HomeScreen(
             onSearch = {}
             )
         
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         
         Text(text = titles,
             modifier = Modifier
@@ -86,10 +86,10 @@ fun HomeScreen(
             color  = colorResource(id = R.color.placeholder)
             )
         
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         
         ArticleList(
-            modifier = Modifier.padding(24.dp),
+            modifier = Modifier.padding(16.dp),
             articles = articles, onClick ={
             navigateToDetails(it)
         } )
